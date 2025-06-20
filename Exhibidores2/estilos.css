@@ -1,0 +1,99 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    padding: 20px;
+}
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+    color: #005A9C;
+}
+.subtitle {
+    text-align: center;
+    color: #555;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+.card {
+    background-color: white;
+    padding: 1.5em 2em;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    margin-bottom: 2em;
+}
+h2 {
+    color: #007BFF;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+.form-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
+    margin-bottom: 1em;
+}
+label, select, button, input {
+    font-size: 1em;
+    padding: 0.6em;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+#resultado-seccion, #resultado-disponibilidad {
+    background-color: #f8f9fa;
+    padding: 1em;
+    border-radius: 6px;
+    margin-top: 1em;
+    min-height: 50px;
+}
+#lista-personas {
+    list-style-type: none;
+    padding-left: 0;
+}
+#lista-personas li {
+    padding: 8px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+}
+#lista-personas li:last-child {
+    border-bottom: none;
+}
+.hidden {
+    display: none;
+}
+.delete-btn {
+    margin-left: 10px;
+    color: #dc3545;
+    font-size: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #ffb8c0;
+    background: #fffafa;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.delete-btn:hover {
+    background-color: #dc3545;
+    color: white;
+}
+#resultado-disponibilidad ul {
+    list-style-type: '✅ ';
+    padding-left: 25px;
+}

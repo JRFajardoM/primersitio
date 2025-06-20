@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Exhibidores</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Títulos dinámicos -->
+        <h1>Gestión de Horarios - <span id="titulo-exhibidor"></span></h1>
+        <p class="subtitle"><span id="subtitulo-exhibidor"></span></p>
+
+        <!-- Tarjeta para seleccionar el Exhibidor -->
+        <div class="card">
+            <h2>Seleccionar Exhibidor</h2>
+            <div class="form-section">
+                <label for="exhibidor-select">Elige un exhibidor para gestionar:</label>
+                <select id="exhibidor-select"></select>
+            </div>
+        </div>
+
+        <!-- Tarjeta para consultar y modificar el horario del exhibidor seleccionado -->
+        <div class="card">
+            <h2>Consultar y Modificar Horario</h2>
+            <div class="form-section">
+                <label for="dia-select">Día:</label>
+                <select id="dia-select">
+                    <option value="LUNES">Lunes</option>
+                    <option value="MARTES">Martes</option>
+                    <option value="MIERCOLES">Miércoles</option>
+                    <option value="JUEVES">Jueves</option>
+                    <option value="VIERNES">Viernes</option>
+                    <option value="SABADO">Sábado</option>
+                    <option value="DOMINGO">Domingo</option>
+                </select>
+
+                <label for="turno-select">Turno:</label>
+                <select id="turno-select">
+                    <option value="TURNO1_7_9">7:00 a.m. - 9:00 a.m.</option>
+                    <option value="TURNO2_9_11">9:00 a.m. - 11:00 a.m.</option>
+                    <option value="TURNO3_11_13">11:00 a.m. - 1:00 p.m.</option>
+                    <option value="TURNO4_13_15">1:00 p.m. - 3:00 p.m.</option>
+                    <option value="TURNO5_15_17">3:00 p.m. - 5:00 p.m.</option>
+                    <option value="TURNO6_17_19">5:00 p.m. - 7:00 p.m.</option>
+                </select>
+
+                <button onclick="consultarHorario()">Consultar</button>
+            </div>
+
+            <div id="resultado-seccion">
+                <h3>Personas Asignadas:</h3>
+                <ul id="lista-personas"></ul>
+                <div id="form-agregar" class="hidden">
+                    <input type="text" id="nombre-input" placeholder="Nombre de la persona">
+                    <button onclick="agregarPersona()">Agregar y Guardar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta para buscar disponibilidad en el exhibidor seleccionado -->
+        <div class="card">
+            <h2>Buscar Turnos Disponibles</h2>
+            <div class="form-section">
+                <label for="turno-buscar-select">Ver disponibilidad para el turno:</label>
+                <select id="turno-buscar-select">
+                    <option value="TURNO1_7_9">7:00 a.m. - 9:00 a.m.</option>
+                    <option value="TURNO2_9_11">9:00 a.m. - 11:00 a.m.</option>
+                    <option value="TURNO3_11_13">11:00 a.m. - 1:00 p.m.</option>
+                    <option value="TURNO4_13_15">1:00 p.m. - 3:00 p.m.</option>
+                    <option value="TURNO5_15_17">3:00 p.m. - 5:00 p.m.</option>
+                    <option value="TURNO6_17_19">5:00 p.m. - 7:00 p.m.</option>
+                </select>
+                 <button onclick="buscarDiasDisponibles()">Buscar Días Libres</button>
+            </div>
+            <div id="resultado-disponibilidad"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
