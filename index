@@ -4,9 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Exhibidores</title>
-    <link rel="stylesheet" href="exhibidor2/estilos.css">
+
+    <!-- ======================= INICIO DEL CÓDIGO CSS ======================= -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #005A9C;
+        }
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-top: -15px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background-color: white;
+            padding: 1.5em 2em;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            margin-bottom: 2em;
+        }
+        h2 {
+            color: #007BFF;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .form-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+        label, select, button, input {
+            font-size: 1em;
+            padding: 0.6em;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultado-seccion, #resultado-disponibilidad {
+            background-color: #f8f9fa;
+            padding: 1em;
+            border-radius: 6px;
+            margin-top: 1em;
+            min-height: 50px;
+        }
+        #lista-personas {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        #lista-personas li {
+            padding: 8px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+        #lista-personas li:last-child {
+            border-bottom: none;
+        }
+        .hidden {
+            display: none;
+        }
+        .delete-btn {
+            margin-left: 10px;
+            color: #dc3545;
+            font-size: 0.8em;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid #ffb8c0;
+            background: #fffafa;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .delete-btn:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+        #resultado-disponibilidad ul {
+            list-style-type: '✅ ';
+            padding-left: 25px;
+        }
+    </style>
+    <!-- ======================= FIN DEL CÓDIGO CSS ======================= -->
+
 </head>
 <body>
+
+    <!-- ======================= INICIO DEL CONTENIDO HTML ======================= -->
     <div class="container">
         <!-- Títulos dinámicos -->
         <h1>Gestión de Horarios - <span id="titulo-exhibidor"></span></h1>
@@ -21,63 +127,5 @@
             </div>
         </div>
 
-        <!-- Tarjeta para consultar y modificar el horario del exhibidor seleccionado -->
-        <div class="card">
-            <h2>Consultar y Modificar Horario</h2>
-            <div class="form-section">
-                <label for="dia-select">Día:</label>
-                <select id="dia-select">
-                    <option value="LUNES">Lunes</option>
-                    <option value="MARTES">Martes</option>
-                    <option value="MIERCOLES">Miércoles</option>
-                    <option value="JUEVES">Jueves</option>
-                    <option value="VIERNES">Viernes</option>
-                    <option value="SABADO">Sábado</option>
-                    <option value="DOMINGO">Domingo</option>
-                </select>
-
-                <label for="turno-select">Turno:</label>
-                <select id="turno-select">
-                    <option value="TURNO1_7_9">7:00 a.m. - 9:00 a.m.</option>
-                    <option value="TURNO2_9_11">9:00 a.m. - 11:00 a.m.</option>
-                    <option value="TURNO3_11_13">11:00 a.m. - 1:00 p.m.</option>
-                    <option value="TURNO4_13_15">1:00 p.m. - 3:00 p.m.</option>
-                    <option value="TURNO5_15_17">3:00 p.m. - 5:00 p.m.</option>
-                    <option value="TURNO6_17_19">5:00 p.m. - 7:00 p.m.</option>
-                </select>
-
-                <button onclick="consultarHorario()">Consultar</button>
-            </div>
-
-            <div id="resultado-seccion">
-                <h3>Personas Asignadas:</h3>
-                <ul id="lista-personas"></ul>
-                <div id="form-agregar" class="hidden">
-                    <input type="text" id="nombre-input" placeholder="Nombre de la persona">
-                    <button onclick="agregarPersona()">Agregar y Guardar</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tarjeta para buscar disponibilidad en el exhibidor seleccionado -->
-        <div class="card">
-            <h2>Buscar Turnos Disponibles</h2>
-            <div class="form-section">
-                <label for="turno-buscar-select">Ver disponibilidad para el turno:</label>
-                <select id="turno-buscar-select">
-                    <option value="TURNO1_7_9">7:00 a.m. - 9:00 a.m.</option>
-                    <option value="TURNO2_9_11">9:00 a.m. - 11:00 a.m.</option>
-                    <option value="TURNO3_11_13">11:00 a.m. - 1:00 p.m.</option>
-                    <option value="TURNO4_13_15">1:00 p.m. - 3:00 p.m.</option>
-                    <option value="TURNO5_15_17">3:00 p.m. - 5:00 p.m.</option>
-                    <option value="TURNO6_17_19">5:00 p.m. - 7:00 p.m.</option>
-                </select>
-                 <button onclick="buscarDiasDisponibles()">Buscar Días Libres</button>
-            </div>
-            <div id="resultado-disponibilidad"></div>
-        </div>
-    </div>
-
-    <script src="exhibidor2/script.js"></script>
 </body>
 </html>
